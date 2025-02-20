@@ -31,3 +31,25 @@ $(document).ready(function() {
         localStorage.setItem("darkMode", "disabled"); // Save preference
     }
 });
+
+
+//About Us JavaScript
+$(document).ready(function () {
+    $(".counter").each(function () {
+        let $this = $(this);
+        let target = parseInt($this.attr("data-target"));
+
+        $({ count: 0 }).animate({ count: target }, {
+            duration: 2000,
+            easing: "swing",
+            step: function () {
+                $this.text(Math.floor(this.count));
+            },
+            complete: function () {
+                $this.text(target);
+            }
+        });
+    });
+});
+
+
