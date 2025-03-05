@@ -1,63 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Meta information for browser compatibility and responsiveness -->
+    <meta charset="UTF-8"> <!-- Defines character encoding for proper text rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures the page is responsive on mobile devices -->
+    <meta name="keywords" content="sneakers, shoes, fashion"> <!--Boost Google Search engine-->
+    <meta name="description" content="Alex's Sport & Sneaker Lounge - Your go-to place for the latest sneakers, sportswear, and fashion trends. Shop now!"><!--Boost Google Search engine-->
+    <meta http-equiv="X-Frame-Options" content="DENY"> <!--Improves website security-->
+
+
+
+    
+    <!-- Page title displayed in the browser tab -->
     <title>Alex's Sport & Sneaker Lounge</title>
+
+    <!-- Favicon (small icon displayed in browser tabs) -->
     <link rel="icon" href="images/icon.jpg" type="image/png">
+
+    <!-- Bootstrap CSS for responsive layout and pre-built components -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons for social media and UI elements -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Custom Stylesheet for additional styling -->
     <link href="css/styles.css" type="text/css" rel="stylesheet">
+
+    <!-- jQuery for interactivity and scripting -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom JavaScript file for site functionality, loaded after HTML for better performance -->
+    <script src="javascript/scripts.js" defer></script>
 </head>
 <body>
-    <!-- Header Section -->
+
+    <!-- Header Section: Contains site title, logo, and dark mode toggle -->
     <header class="text-white text-center py-3 d-flex justify-content-between align-items-center px-4">
         <div class="container">
+            <!-- Logo -->
             <img src="images/logo.jpg" alt="Alex's Logo" width="50" height="50">
+            <!-- Website Title -->
             <h1 class="ms-3 mb-0">Alex's Sport & Sneaker Lounge</h1>
         </div>
-        <button id="darkModeToggle" class="btn btn-light">Dark Mode</button>
+        <!-- Dark Mode Toggle Button -->
+        <button id="darkModeToggle" class="btn btn-light">
+            <i class="bi bi-moon-fill"></i> <!-- Moon icon for dark mode -->
+        </button>
     </header>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg  sticky-top">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container-fluid">
+            <!-- Logo (Initially Hidden, Appears on Scroll) -->
+            <a class="navbar-brand d-none ms-5" id="navLogo" href="index.html">
+                <img src="images/logo.jpg" alt="Alex's Logo" width="40" height="40">
+            </a>
+            <!-- Navbar Toggle Button (for mobile views) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <!-- Navbar Links -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="tasks.html">Tasks</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Welcome Section -->
+    <!-- Welcome Section: Brief Introduction -->
     <section class="container my-5 text-center">
         <h2>Welcome to Alex's Sport & Sneaker Lounge</h2>
-        <p>Discover the latest trends in shoes and clothing, curated just for you.</p>
+        <p>Discover the latest trends in shoes, curated just for you.</p>
+        <!-- Button that directs users to the Wishlist & Sneaker Tracker page -->
         <a href="tasks.html" class="btn btn-custom">View Wishlist & Sneaker Tracker</a>
     </section>
 
-    <!-- Latest Trends Carousel -->
+    <!-- Latest Trends Carousel: Showcasing trending sneakers -->
     <section class="container my-5">
         <h2 class="text-center">Latest Trends</h2>
         <div id="latestTrendsCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
+                <!-- Each carousel item represents an image of a trending sneaker -->
                 <div class="carousel-item active">
-                    <img src="images/Stan.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 1">
+                    <img src="images/nike dunk.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/Sneaker.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 2">
+                    <img src="images/nike air force.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 2">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/ultraboost.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 3">
+                    <img src="images/nike p-6000.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/new balance 9060.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/adidas gazelle.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 5">
+                </div>
+                <div class="carousel-item">
+                    <img src="images/adidas spezial.jpg" class="d-block mx-auto" style="max-width: 500px; height: auto;" alt="Trend 6">
                 </div>
             </div>
+            <!-- Carousel Navigation Controls -->
             <button class="carousel-control-prev" type="button" data-bs-target="#latestTrendsCarousel" data-bs-slide="prev" style="filter: invert(40%);">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
@@ -69,7 +117,17 @@
         </div>
     </section>
 
-    <!-- Latest Activity Section -->
+    <!-- Sneaker Drop Countdown -->
+    <section class="container my-5 text-center">
+        <h2>🔥 Next Sneaker Drop Incoming! 🔥</h2>
+        <div id="countdown-box">
+            <i class="bi bi-stopwatch-fill"></i> <!-- Stopwatch Icon -->
+            <h3 id="countdown"></h3> <!-- Countdown Timer Display -->
+        </div>
+        <p>Be ready for the latest drop! Secure your pair before it's gone. 🚀</p>
+    </section>
+
+    <!-- Latest Activity Section: Displays the last 5 user actions -->
     <section class="container my-5">
         <h2>Latest Activity</h2>
         <ul id="latestActivity" class="list-group">
@@ -82,8 +140,9 @@
         <p>&copy; 2025 Alex's Sport & Sneaker Lounge. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript & jQuery -->
+    <!-- JavaScript Libraries -->
+    <!-- Bootstrap JavaScript for interactive elements -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="javascript/scripts.js"></script>
+
 </body>
 </html>
