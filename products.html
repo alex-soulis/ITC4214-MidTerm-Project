@@ -8,8 +8,6 @@
     <meta name="description" content="Alex's Sport & Sneaker Lounge - Your go-to place for the latest sneakers, sportswear, and fashion trends. Shop now!"><!--Boost Google Search engine-->
     <meta http-equiv="X-Frame-Options" content="DENY"> <!--Improves website security-->
 
-
-
     <!-- Page title displayed in the browser tab -->
     <title>Products - Alex's Sport & Sneaker Lounge</title>
 
@@ -42,13 +40,13 @@
             <h1 class="ms-3 mb-0">Alex's Sport & Sneaker Lounge</h1>
         </div>
         <!-- Dark Mode Toggle Button -->
-        <button id="darkModeToggle" class="btn btn-light">
+        <button id="darkModeToggle" class="btn btn-light" aria-label="Toggle Dark Mode">
             <i class="bi bi-moon-fill"></i> <!-- Moon icon for dark mode -->
         </button>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top" role="navigation" aria-label="Main Navigation">
         <div class="container-fluid">
             <!-- Logo (Initially Hidden, Appears on Scroll) -->
             <a class="navbar-brand d-none ms-5" id="navLogo" href="index.html">
@@ -72,37 +70,35 @@
     </nav>
 
     <!-- Products Section: Displays a list of available sneakers -->
-    <section class="container my-5">
-        <h2 class="text-center">Our Products</h2>
-        <div class="row">
+    <section class="container my-5" role="region" aria-labelledby="products-title">
+        <h2 class="text-center" id="products-title">Our Products</h2>
+        <div class="row" role="list">
             <!-- Product 1 -->
-            <div class="col-md-4">
+            <div class="col-md-4" role="listitem">
                 <div class="product-card">
-                    <!-- Product Image -->
-                    <img src="images/new balance 9060.jpg" class="card-img-top" alt="Product 1">
+                    <img src="images/new balance 9060.jpg" class="card-img-top" alt="New Balance 9060 Sneakers">
                     <div class="card-body">
-                        <!-- Product Name and Description -->
-                        <h5 class="product-card-title">New Balance</h5>
+                        <h5 class="product-card-title" id="product1-title">New Balance</h5>
                         <p class="product-card-text">New Balance 9060 Unisex Shoes</p>
                     </div>
                 </div>
             </div>
             <!-- Product 2 -->
-            <div class="col-md-4">
+            <div class="col-md-4" role="listitem">
                 <div class="product-card">
-                    <img src="images/nike dunk.jpg" class="card-img-top" alt="Product 2">
+                    <img src="images/nike dunk.jpg" class="card-img-top" alt="Nike Dunk Low Sneakers">
                     <div class="card-body">
-                        <h5 class="product-card-title">Nike</h5>
+                        <h5 class="product-card-title" id="product2-title">Nike</h5>
                         <p class="product-card-text">Nike Dunk Low</p>
                     </div>
                 </div>
             </div>
             <!-- Product 3 -->
-            <div class="col-md-4">
+            <div class="col-md-4" role="listitem">
                 <div class="product-card">
-                    <img src="images/adidas gazelle.jpg" class="card-img-top" alt="Product 3">
+                    <img src="images/adidas gazelle.jpg" class="card-img-top" alt="Adidas Gazelle Sneakers">
                     <div class="card-body">
-                        <h5 class="product-card-title">Adidas</h5>
+                        <h5 class="product-card-title" id="product3-title">Adidas</h5>
                         <p class="product-card-text">Adidas Gazelle</p>
                     </div>
                 </div>
@@ -110,33 +106,33 @@
         </div>
 
         <!-- Second Row of Products -->
-        <div class="row mt-4">
+        <div class="row mt-4" role="list">
             <!-- Product 4 -->
-            <div class="col-md-4">
+            <div class="col-md-4" role="listitem">
                 <div class="product-card">
-                    <img src="images/adidas spezial.jpg" class="card-img-top" alt="Product 4">
+                    <img src="images/adidas spezial.jpg" class="card-img-top" alt="Adidas Spezial Sneakers">
                     <div class="card-body">
-                        <h5 class="product-card-title">Adidas</h5>
+                        <h5 class="product-card-title" id="product4-title">Adidas</h5>
                         <p class="product-card-text">Adidas Spezial</p>
                     </div>
                 </div>
             </div>
             <!-- Product 5 -->
-            <div class="col-md-4">
+            <div class="col-md-4" role="listitem">
                 <div class="product-card">
-                    <img src="images/nike air force.jpg" class="card-img-top" alt="Product 5">
+                    <img src="images/nike air force.jpg" class="card-img-top" alt="Nike Air Force Sneakers">
                     <div class="card-body">
-                        <h5 class="product-card-title">Nike</h5>
+                        <h5 class="product-card-title" id="product5-title">Nike</h5>
                         <p class="product-card-text">Nike Air Force</p>
                     </div>
                 </div>
             </div>
             <!-- Product 6 -->
-            <div class="col-md-4">
+            <div class="col-md-4" role="listitem">
                 <div class="product-card">
-                    <img src="images/nike p-6000.jpg" class="card-img-top" alt="Product 6">
+                    <img src="images/nike p-6000.jpg" class="card-img-top" alt="Nike P-6000 Sneakers">
                     <div class="card-body">
-                        <h5 class="product-card-title">Nike</h5>
+                        <h5 class="product-card-title" id="product6-title">Nike</h5>
                         <p class="product-card-text">Nike P-6000</p>
                     </div>
                 </div>

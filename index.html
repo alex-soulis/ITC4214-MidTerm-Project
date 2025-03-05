@@ -7,9 +7,6 @@
     <meta name="keywords" content="sneakers, shoes, fashion"> <!--Boost Google Search engine-->
     <meta name="description" content="Alex's Sport & Sneaker Lounge - Your go-to place for the latest sneakers, sportswear, and fashion trends. Shop now!"><!--Boost Google Search engine-->
     <meta http-equiv="X-Frame-Options" content="DENY"> <!--Improves website security-->
-
-
-
     
     <!-- Page title displayed in the browser tab -->
     <title>Alex's Sport & Sneaker Lounge</title>
@@ -43,13 +40,13 @@
             <h1 class="ms-3 mb-0">Alex's Sport & Sneaker Lounge</h1>
         </div>
         <!-- Dark Mode Toggle Button -->
-        <button id="darkModeToggle" class="btn btn-light">
+        <button id="darkModeToggle" class="btn btn-light" aria-label="Toggle Dark Mode">
             <i class="bi bi-moon-fill"></i> <!-- Moon icon for dark mode -->
         </button>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top" role="navigation" aria-label="Main Navigation">
         <div class="container-fluid">
             <!-- Logo (Initially Hidden, Appears on Scroll) -->
             <a class="navbar-brand d-none ms-5" id="navLogo" href="index.html">
@@ -73,16 +70,16 @@
     </nav>
 
     <!-- Welcome Section: Brief Introduction -->
-    <section class="container my-5 text-center">
-        <h2>Welcome to Alex's Sport & Sneaker Lounge</h2>
+    <section class="container my-5 text-center" role="region" aria-labelledby="welcome-title">
+        <h2 id="welcome-title">Welcome to Alex's Sport & Sneaker Lounge</h2>
         <p>Discover the latest trends in shoes, curated just for you.</p>
         <!-- Button that directs users to the Wishlist & Sneaker Tracker page -->
         <a href="tasks.html" class="btn btn-custom">View Wishlist & Sneaker Tracker</a>
     </section>
 
     <!-- Latest Trends Carousel: Showcasing trending sneakers -->
-    <section class="container my-5">
-        <h2 class="text-center">Latest Trends</h2>
+    <section class="container my-5" role="region" aria-roledescription="carousel" aria-labelledby="carousel-title">
+        <h2 class="text-center" id="carousel-title">Latest Trends</h2>
         <div id="latestTrendsCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <!-- Each carousel item represents an image of a trending sneaker -->
@@ -120,7 +117,7 @@
     <!-- Sneaker Drop Countdown -->
     <section class="container my-5 text-center">
         <h2>🔥 Next Sneaker Drop Incoming! 🔥</h2>
-        <div id="countdown-box">
+        <div id="countdown-box" aria-live="polite">
             <i class="bi bi-stopwatch-fill"></i> <!-- Stopwatch Icon -->
             <h3 id="countdown"></h3> <!-- Countdown Timer Display -->
         </div>
@@ -128,10 +125,10 @@
     </section>
 
     <!-- Latest Activity Section: Displays the last 5 user actions -->
-    <section class="container my-5">
+    <section class="container my-5" role="region" aria-labelledby="activity-title">
         <h2>Latest Activity</h2>
-        <ul id="latestActivity" class="list-group">
-            <li class="list-group-item">No recent activity.</li>
+        <ul id="latestActivity" class="list-group" role="list">
+            <li class="list-group-item" role="listitem">No recent activity.</li>
         </ul>
     </section>
 

@@ -8,7 +8,6 @@
     <meta name="description" content="Alex's Sport & Sneaker Lounge - Your go-to place for the latest sneakers, sportswear, and fashion trends. Shop now!"><!--Boost Google Search engine-->
     <meta http-equiv="X-Frame-Options" content="DENY"> <!--Improves website security-->
 
-
     <!-- Page title displayed in the browser tab -->
     <title>About Us - Alex's Sport & Sneaker Lounge</title>
 
@@ -41,13 +40,13 @@
             <h1 class="ms-3 mb-0">Alex's Sport & Sneaker Lounge</h1>
         </div>
         <!-- Dark Mode Toggle Button -->
-        <button id="darkModeToggle" class="btn btn-light">
+        <button id="darkModeToggle" class="btn btn-light" aria-label="Toggle Dark Mode">
             <i class="bi bi-moon-fill"></i> <!-- Moon icon for dark mode -->
         </button>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top" role="navigation" aria-label="Main Navigation">
         <div class="container-fluid">
             <!-- Logo (Initially Hidden, Appears on Scroll) -->
             <a class="navbar-brand d-none ms-5" id="navLogo" href="index.html">
@@ -71,19 +70,19 @@
     </nav>
 
     <!-- About Section: Introduction to the platform -->
-    <section class="container my-5 text-center">
+    <section class="container my-5 text-center" role="region" aria-labelledby="about-title">
         <h2>About Alex's Sport & Sneaker Lounge</h2>
         <p>Alex's Sport & Sneaker Lounge is your go-to platform for the latest trends in sportswear and sneakers. We bring you the freshest styles from top brands to keep you ahead in the fashion game.</p>
     </section>
 
     <!-- Team Members Section: Shows that this is a solo project -->
-    <section class="container my-5 text-center">
+    <section class="container my-5 text-center" role="region" aria-labelledby="team-title">
         <h2>Team Member</h2>
         <p>This project is a solo endeavor by Alexandros Soulis, dedicated to creating an exceptional shopping experience.</p>
     </section>
 
     <!-- Grid Cards Layout: Displaying the Developer (Solo Project) -->
-    <section class="container my-5">
+    <section class="container my-5" role="region" aria-labelledby="developer-title">
         <h2 class="text-center">Meet the Developer</h2>
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -101,22 +100,22 @@
     </section>
 
     <!-- Impact Section: Shows project achievements with animated counters -->
-    <section class="container my-5 text-center">
+    <section class="container my-5 text-center" role="region" aria-labelledby="impact-title">
         <h2>Our Impact</h2>
         <div class="row">
             <!-- Counter 1: Sneakers Tracked -->
             <div class="col-md-4">
-                <h3><span class="counter" data-target="500">0</span>+</h3>
+                <h3><span class="counter" data-target="500" aria-live="polite">0</span>+</h3>
                 <p>Sneakers Tracked</p>
             </div>
             <!-- Counter 2: Happy Customers -->
             <div class="col-md-4">
-                <h3><span class="counter" data-target="1000">0</span>+</h3>
+                <h3><span class="counter" data-target="1000" aria-live="polite">0</span>+</h3>
                 <p>Happy Customers</p>
             </div>
             <!-- Counter 3: Brands Featured -->
             <div class="col-md-4">
-                <h3><span class="counter" data-target="50">0</span>+</h3>
+                <h3><span class="counter" data-target="50" aria-live="polite">0</span>+</h3>
                 <p>Brands Featured</p>
             </div>
         </div>

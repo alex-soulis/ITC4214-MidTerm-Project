@@ -8,8 +8,6 @@
     <meta name="description" content="Alex's Sport & Sneaker Lounge - Your go-to place for the latest sneakers, sportswear, and fashion trends. Shop now!"><!--Boost Google Search engine-->
     <meta http-equiv="X-Frame-Options" content="DENY"> <!--Improves website security-->
 
-
-
     <!-- Page title displayed in the browser tab -->
     <title>Tasks - Alex's Sport & Sneaker Lounge</title>
 
@@ -42,13 +40,13 @@
             <h1 class="ms-3 mb-0">Alex's Sport & Sneaker Lounge</h1>
         </div>
         <!-- Dark Mode Toggle Button -->
-        <button id="darkModeToggle" class="btn btn-light">
+        <button id="darkModeToggle" class="btn btn-light" aria-label="Toggle Dark Mode">
             <i class="bi bi-moon-fill"></i> <!-- Moon icon for dark mode -->
         </button>
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top" role="navigation" aria-label="Main Navigation">
         <div class="container-fluid">
             <!-- Logo (Initially Hidden, Appears on Scroll) -->
             <a class="navbar-brand d-none ms-5" id="navLogo" href="index.html">
@@ -72,24 +70,28 @@
     </nav>
 
     <!-- Task Form Section: Allows users to add tasks -->
-    <section class="container my-5">
-        <h2 class="text-center">Sneaker Drop Reminders & Budget Tracker</h2>
+    <section class="container my-5" role="form" aria-labelledby="task-form-title">
+        <h2 class="text-center" id="task-form-title">Sneaker Drop Reminders & Budget Tracker</h2>
         <form id="taskForm" class="mb-4">
             <div class="row g-3">
-                <!-- Input Fields for Task Details -->
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="taskName" placeholder="Item Name" required>
+                    <label for="taskName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="taskName" placeholder="Enter item name" required>
                 </div>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" id="taskDescription" placeholder="Description" required>
+                    <label for="taskDescription" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="taskDescription" placeholder="Enter description" required>
                 </div>
                 <div class="col-md-4">
+                    <label for="taskDate" class="form-label">Release Date</label>
                     <input type="date" class="form-control" id="taskDate" required>
                 </div>
                 <div class="col-md-4">
-                    <input type="number" class="form-control" id="taskCost" placeholder="Estimated Cost" required>
+                    <label for="taskCost" class="form-label">Estimated Cost</label>
+                    <input type="number" class="form-control" id="taskCost" placeholder="Enter cost" required>
                 </div>
                 <div class="col-md-4">
+                    <label for="taskPriority" class="form-label">Priority</label>
                     <select class="form-select" id="taskPriority" required>
                         <option value="">Select Priority</option>
                         <option value="High">High</option>
@@ -98,7 +100,6 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <!-- Submit Button to Add Task -->
                     <button type="submit" class="btn btn-custom w-100">Add Item</button>
                 </div>
             </div>
@@ -107,22 +108,20 @@
 
     <!-- Filter by Priority Dropdown -->
     <section class="container my-3">
-        <div class="row justify-content-end">
-            <div class="col-md-4">
-                <select class="form-select" id="priorityFilter">
-                    <option value="all">Filter by Priority</option>
-                    <option value="high">High</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
-                 </select>
-            </div>
-        </div>
+        <label for="priorityFilter" class="form-label">Filter by Priority</label>
+        <select class="form-select" id="priorityFilter" aria-describedby="priority-info">
+            <option value="all">Show All</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+        </select>
+        <small id="priority-info" class="form-text">Filter your tasks by priority level.</small>
     </section>
 
     <!-- Task List Table: Displays added tasks -->
-    <section class="container">
-        <h3 class="text-center">Wishlist</h3>
-        <table class="table table-striped">
+    <section class="container" role="region" aria-labelledby="wishlist-title">
+        <h3 class="text-center" id="wishlist-title">Wishlist</h3>
+        <table class="table table-striped" role="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -144,12 +143,12 @@
     </section>
 
     <!-- Summary Section: Displays total tasks and cost breakdown -->
-    <section class="container my-5">
-        <h3 class="text-center">Summary</h3>
+    <section class="container my-5" role="region" aria-labelledby="summary-title">
+        <h3 class="text-center" id="summary-title">Summary</h3>
         <ul class="list-group">
-            <li class="list-group-item">Total Items: <span id="totalItems">0</span></li>
-            <li class="list-group-item">Total Cost (Pending): $<span id="totalPendingCost">0</span></li>
-            <li class="list-group-item">Total Cost (Purchased): $<span id="totalPurchasedCost">0</span></li>
+            <li class="list-group-item">Total Items: <span id="totalItems" aria-live="polite">0</span></li>
+            <li class="list-group-item">Total Cost (Pending): $<span id="totalPendingCost" aria-live="polite">0</span></li>
+            <li class="list-group-item">Total Cost (Purchased): $<span id="totalPurchasedCost" aria-live="polite">0</span></li>
         </ul>
     </section>
 
