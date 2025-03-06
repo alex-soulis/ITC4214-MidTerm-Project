@@ -36,7 +36,7 @@ $(document).ready(function() {
 /*COUNTDOWN TIMER FOR SNEAKER DROP */
 function countdownTimer() {
     // Set the sneaker drop release date (Year, Month-1, Day, Hour, Minute, Second)
-    const releaseDate = new Date(2025, 3, 14, 17, 45, 0).getTime();
+    const releaseDate = new Date(2025, 2, 14, 0, 0, 0).getTime();
 
     const timer = setInterval(function () {
         const now = new Date().getTime(); // Get current time
@@ -129,27 +129,40 @@ $(document).ready(function () {
         });
     });
 });
+/* Task Page */
+//Ensure the script runs only after the DOM (web page) is fully loaded.
+$(document).ready(function() {
 
-/* TASK MANAGEMENT SYSTEM */
-$(document).ready(function() { // Ensures the script runs only after the document is fully loaded
-    let tasks = []; // Array to store all tasks
+    //Retrieve saved tasks from localStorage or initialize an empty array if no tasks exist.
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || []; 
 
-    // Add Task Function
-    $("#taskForm").submit(function(e) { // Listens for form submission
-        e.preventDefault(); // Prevents page refresh on form submission
+    //Load tasks from localStorage and display them when the page loads.
+    updateTaskList();
+    
+    //Load summary statistics (total tasks, costs) when the page loads.
+    updateSummary(); 
 
-        // Get input values from form fields
-        const name = $("#taskName").val(); // Retrieves the task name
-        const description = $("#taskDescription").val(); // Retrieves the task description
-        const date = $("#taskDate").val(); // Retrieves the task release date
-        const cost = parseFloat($("#taskCost").val()); // Retrieves and converts cost to a floating-point number
-        const priority = $("#taskPriority").val(); // Retrieves the selected priority level
-        const status = "Pending"; // Sets the initial status of the task to "Pending"
+    //Function to save tasks into localStorage to ensure data persists after page refresh.
+    function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks)); // Convert tasks array into a JSON string and store it.
+    }
 
-        // Create a task object with a unique ID
+    // Function to handle the task form submission.
+    $("#taskForm").submit(function(e) {
+        e.preventDefault(); //Prevents the page from refreshing when the form is submitted.
+
+        // 📝 Capture user input values from the form fields.
+        const name = $("#taskName").val(); // Get task name.
+        const description = $("#taskDescription").val(); // Get task description.
+        const date = $("#taskDate").val(); // Get the sneaker release date.
+        const cost = parseFloat($("#taskCost").val()); // Get the estimated cost and convert it to a number.
+        const priority = $("#taskPriority").val(); // Get priority level (High, Medium, Low).
+        const status = "Pending"; // Default status when a task is created.
+
+        // 🆕 Create a new task object with the gathered information.
         const newTask = {
-            id: Date.now(), // Generates a unique ID using the current timestamp
-            name, 
+            id: Date.now(), // Assign a unique ID based on the current timestamp.
+            name,
             description,
             date,
             cost,
@@ -157,90 +170,117 @@ $(document).ready(function() { // Ensures the script runs only after the documen
             status
         };
 
-        tasks.push(newTask); // Adds the new task to the tasks array
-        updateTaskList(); // Updates the displayed task list
-        updateSummary(); // Updates task summary (total tasks & costs)
-        updateLatestActivity(`Added task: ${name} (${priority} priority)`); // Logs action in Latest Activity
-        this.reset(); // Resets the form fields
+        tasks.push(newTask); //Add the new task to the tasks array.
+        saveTasks(); //Save the updated task list to localStorage.
+        updateTaskList(); //Refresh the task table to display the new task.
+        updateSummary(); //Update the task summary statistics.
+        updateLatestActivity(`Added task: ${name} (${priority} priority)`); //Log this activity in the Latest Activity section.
+
+        this.reset(); //Clear/reset the form after submission.
     });
 
-    // Function to Update Task List (Refresh the table)
+    //Function to update the task table.
     function updateTaskList() {
-        const $taskList = $("#taskList"); // Selects the task list table body
-        $taskList.empty(); // Clears the existing table content
+        const $taskList = $("#taskList"); // Select the table body.
+        $taskList.empty(); //Clear the existing table rows before reloading the updated task list.
 
-        // Loop through all tasks and create table rows dynamically
+        // If there are no tasks, display a default message.
+        if (tasks.length === 0) {
+            $taskList.append(`<tr><td colspan="7" class="text-center">No items added yet.</td></tr>`);
+            return;
+        }
+
+        //Loop through the tasks array and create a table row for each task.
         tasks.forEach(task => {
             const $row = $(`
-                <tr data-id="${task.id}"> 
-                    <td class="editable">${task.name}</td> 
-                    <td class="editable">${task.description}</td> 
-                    <td class="editable">${task.date}</td> 
-                    <td class="editable">$${task.cost.toFixed(2)}</td> 
-                    <td class="editable">${task.priority}</td> 
-                    <td>${task.status}</td> 
+                <tr data-id="${task.id}">
+                    <td class="editable">${task.name}</td>
+                    <td class="editable">${task.description}</td>
+                    <td class="editable">${task.date}</td>
+                    <td class="editable">$${task.cost.toFixed(2)}</td>
+                    <td class="editable">${task.priority}</td>
+                    <td>${task.status}</td>
                     <td>
-                        <button class="btn btn-sm btn-danger delete-task">Delete</button> 
-                        <button class="btn btn-sm btn-success mark-purchased">Mark as Purchased</button> 
+                        <button class="btn btn-sm btn-danger delete-task">Delete</button>
+                        <button class="btn btn-sm btn-success mark-purchased">Mark as Purchased</button>
                     </td>
                 </tr>
             `);
-
-            $taskList.append($row); // Appends the row to the table
+            $taskList.append($row); //Append the new row to the table.
         });
     }
 
-    // Inline Editing on Double Click
-    $("#taskList").on("dblclick", ".editable", function() { // Listens for double-clicks on editable table cells
-        let currentText = $(this).text(); // Gets the current cell text
-        let inputField = $("<input type='text' class='form-control'>").val(currentText); // Creates an input field with current text
-        $(this).html(inputField); // Replaces cell content with input field
+    //Enable inline editing of task details on **double-click**.
+    $("#taskList").on("dblclick", ".editable", function() {
+        let currentText = $(this).text(); //Get the current text of the cell.
+        let inputField = $("<input type='text' class='form-control'>").val(currentText); // Create an input field and set its value to the current text.
+        $(this).html(inputField); // Replace the cell's content with the input field.
 
-        inputField.focus().on("blur keypress", function(e) { 
-            if (e.type === "blur" || e.which === 13) { // If Enter key is pressed or focus is lost
-                let newValue = $(this).val(); // Gets updated input value
-                $(this).parent().text(newValue); // Updates the table cell with new value
+        // Save the updated value when the user clicks outside (blur) or presses Enter.
+        inputField.focus().on("blur keypress", function(e) {
+            if (e.type === "blur" || e.which === 13) { // If focus is lost or the Enter key (key code 13) is pressed:
+                let newValue = $(this).val(); // Get the updated value.
+                let taskId = $(this).closest("tr").data("id"); // Retrieve the task ID from the row.
+                let task = tasks.find(t => t.id === taskId); // Find the corresponding task in the array.
+
+                let columnIndex = $(this).parent().index(); // Get the column index of the edited cell.
+                switch (columnIndex) {
+                    case 0: task.name = newValue; break; // Update task name.
+                    case 1: task.description = newValue; break; // Update task description.
+                    case 2: task.date = newValue; break; // Update release date.
+                    case 3: task.cost = parseFloat(newValue.replace("$", "")); break; // Update estimated cost.
+                    case 4: task.priority = newValue; break; // Update priority.
+                }
+
+                saveTasks(); //Save the updated tasks.
+                updateTaskList(); //Refresh the task list to reflect the changes.
             }
         });
     });
 
-    // Delete Task Function
-    $("#taskList").on("click", ".delete-task", function() { // Listens for delete button click
-        const id = $(this).closest("tr").data("id"); // Gets the task ID from table row
-        tasks = tasks.filter(t => t.id !== id); // Filters out the deleted task from the array
-        updateLatestActivity("Deleted a task."); // Logs activity
-        updateTaskList(); // Refreshes task list
-        updateSummary(); // Updates summary
+    // Delete a task when the "Delete" button is clicked.
+    $("#taskList").on("click", ".delete-task", function() {
+        const id = $(this).closest("tr").data("id"); // Retrieve the task ID.
+        tasks = tasks.filter(t => t.id !== id); // Remove the task from the array.
+        saveTasks(); // 💾 Save the updated task list.
+        updateLatestActivity("Deleted a task."); // Log this action in Latest Activity.
+        updateTaskList(); //Refresh the table.
+        updateSummary(); // Update the task summary.
     });
 
-    // Mark Task as Purchased
-    $("#taskList").on("click", ".mark-purchased", function() { // Listens for "Mark as Purchased" button click
-        const id = $(this).closest("tr").data("id"); // Gets the task ID from table row
-        const task = tasks.find(t => t.id === id); // Finds the specific task in the array
+    // Mark a task as "Purchased" when the button is clicked.
+    $("#taskList").on("click", ".mark-purchased", function() {
+        const id = $(this).closest("tr").data("id"); // Get task ID.
+        const task = tasks.find(t => t.id === id); // Locate the task in the array.
 
-        if (task.status === "Pending") { // Ensures only pending tasks can be purchased
-            task.status = "Purchased"; // Updates task status
-            updateLatestActivity(`Marked as purchased: ${task.name}`); // Logs action
+        if (task.status === "Pending") {
+            task.status = "Purchased"; // Update the task status.
+            updateLatestActivity(`Marked as purchased: ${task.name}`); // Log the action in Latest Activity.
         }
 
-        updateTaskList(); // Refreshes task list
-        updateSummary(); // Updates task summary
+        saveTasks(); // Save the updated tasks.
+        updateTaskList(); // Refresh the task list.
+        updateSummary(); // Update the summary section.
     });
 
-    // Function to Update Summary Section
+    // Function to update the summary section.
     function updateSummary() {
-        const totalItems = tasks.length; // Counts total tasks
+        const totalItems = tasks.length; // Count the total number of tasks.
+        
+        // Calculate total cost of "Pending" tasks.
         const totalPendingCost = tasks
-            .filter(t => t.status === "Pending") // Filters only pending tasks
-            .reduce((sum, t) => sum + t.cost, 0); // Adds up pending costs
+            .filter(t => t.status === "Pending") // Get tasks that are still pending.
+            .reduce((sum, t) => sum + t.cost, 0); // Sum their costs.
 
+        // Calculate total cost of "Purchased" tasks.
         const totalPurchasedCost = tasks
-            .filter(t => t.status === "Purchased") // Filters only purchased tasks
-            .reduce((sum, t) => sum + t.cost, 0); // Adds up purchased costs
+            .filter(t => t.status === "Purchased") // Get tasks that have been purchased.
+            .reduce((sum, t) => sum + t.cost, 0); // Sum their costs.
 
-        $("#totalItems").text(totalItems); // Updates total tasks display
-        $("#totalPendingCost").text(totalPendingCost.toFixed(2)); // Updates pending cost
-        $("#totalPurchasedCost").text(totalPurchasedCost.toFixed(2)); // Updates purchased cost
+        // Update the UI with the calculated values.
+        $("#totalItems").text(totalItems);
+        $("#totalPendingCost").text(totalPendingCost.toFixed(2));
+        $("#totalPurchasedCost").text(totalPurchasedCost.toFixed(2));
     }
 });
 
