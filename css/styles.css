@@ -43,13 +43,7 @@ nav ul li {
     margin: 0 15px;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
-}
+
 
 nav ul li a:hover {
     background-color: #0AD1C8;
@@ -92,17 +86,13 @@ footer {
 }
 
 .dark-mode .list-group-item {
-    background-color: #80ED99;
+    background-color: #45DFB1;
     color: white;
 }
 
 /* INDEX PAGE STYLES */
 
-/*Carousel Image Transparency in Dark Mode */
-.dark-mode .carousel-item img {
-    opacity: 0.5;
-    transition: opacity 0.3s;
-}
+
 
 /* Sneaker Drop Countdown Styling */
 #countdown-box {
@@ -207,10 +197,6 @@ table th, table td {
     text-align: center;
 }
 
-/* Alternate Row Coloring */
-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
 
 /* Social Media Icons */
 .text-dark i {
@@ -228,10 +214,3 @@ table tr:nth-child(even) {
     color: white !important;
 }
 
-/*Responsive Design */
-@media (max-width: 768px) {
-    .card img {
-        width: 100%;
-        height: auto;
-    }
-}
